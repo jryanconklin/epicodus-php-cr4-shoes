@@ -1,0 +1,69 @@
+/* ID Selectors */
+
+
+
+/* Core Styles */
+
+header h1,
+header h3 {
+  color: #fff;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .8);
+}
+
+img {
+  max-width: 100%;
+  margin: 10px 0 10px 0;
+  border-radius: 1%;
+}
+
+/* Main Styles */
+
+.mainHeader {
+  padding: 20px;
+  height: 150px;
+  margin-bottom: 10px;
+  background: linear-gradient(#1D2120, transparent 50%),
+              linear-gradient(0deg, #5A5C51, transparent),
+              #795548 url('../img/mtn-landscape-1.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.container {
+  min-height: calc(100vh - 270px);
+  text-align: center;
+}
+
+.mainSection,
+.mainFooter {
+  text-align: center;
+}
+
+.pageHead,
+.mainSection {
+    margin-top: 25px;
+}
+
+.mainSection {
+    margin-top: 25px;;
+}
+
+
+
+
+.mainFooter {
+  font-size: .75em;
+  width: 100%;
+  padding-top: 50px;
+  height: 100px;
+  border-bottom: solid 15px #BCD5D1;
+}
+
+/* Floated Images */
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Media Queries */
