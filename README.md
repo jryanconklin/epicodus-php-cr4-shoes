@@ -1,5 +1,5 @@
-# Application Name
-Subtitle of Lesson
+# Shoes in my Town
+Epicodus - PHP - Databases Extended - Code Review 4
 
 ## Features
 A description of what it does.
@@ -10,7 +10,7 @@ PHP, SQL, Silex, Twig, HTML, CSS and Bootstrap.
 
 ## Usage
 
-To use the code, you can clone the repository at [https://github.com/jryanconklin/path-to-repo](https://github.com/jryanconklin/path-to-repo).
+To use the code, you can clone the repository at [https://github.com/jryanconklin/epicodus-php-cr4-shoes](https://github.com/jryanconklin/epicodus-php-cr4-shoes).
 
 For best results, please:
 
@@ -22,25 +22,52 @@ For best results, please:
 
 ## Specifications
 
-*A spec in plain english.*
+*As a user, I want to create, read, update, and list stores so I can keep track of stores that carry shoes.*
 
-__Input__:
+__Input__: "Target"
 
-__Output__:
+__Output__: "Target"
 
 #### Specification 2 ####
-*Another spec in plain english.*
+*As a user, I want to enter brands of shoes.*
 
-__Input__:
+__Input__: "Doc Martens"
 
-__Output__:
+__Output__: "Doc Martens"
 
 #### Specification 3 ####
-*Yet another spec in plain english.*
+*As a user, I want to assign brands to stores that carry them, so that I know which stores carry which brands and at which store I can find the brand I'm looking for.*
 
-__Input__:
+__Input 1__: "Doc Martens"
 
-__Output__:
+__Input 2__: "Adidias"
+
+__Input 3__: "Target"
+
+__Input 4__: "Fred Meyer"
+
+__Output__: "Doc Martens and Adidas are at Target and Fred Meyer"
+
+## Database Code
+
+CREATE DATABASE shoes;
+USE shoes;
+
+CREATE TABLE stores (
+    id serial PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE brands (
+    id serial PRIMARY KEY,
+    name VARCHAR (100)
+);
+
+CREATE TABLE stores_brands (
+    id serial PRIMARY KEY,
+    store_id int,
+    brand_id int
+);
 
 ## Author/s
 J. Ryan Conklin

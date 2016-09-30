@@ -6,18 +6,18 @@
     */
 
     require_once __DIR__."/../inc/ConnectionTest.php";
-    require_once __DIR__."/../src/FirstClass.php";
-    require_once __DIR__."/../src/SecondClass.php";
+    require_once __DIR__."/../src/Store.php";
+    require_once __DIR__."/../src/Brand.php";
 
     class ClassTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
-            FirstClass::deleteAll();
-            SecondClass::deleteAll();
+            Store::deleteAll();
+            Brand::deleteAll();
         }
 
-        function test_someFunction()
+        function test_getId()
         {
             //Arrange
 
@@ -28,7 +28,10 @@
             //Assert
 
 
-       }
+        }
+
+
+
 
 //End Test
     }

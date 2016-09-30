@@ -1,6 +1,6 @@
 <?php
 
-    class NewName
+    class Brand
     {
 //Properties
 
