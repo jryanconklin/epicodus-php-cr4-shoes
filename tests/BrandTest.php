@@ -5,17 +5,17 @@
     * @backupStaticAttributes disabled
     */
 
-    // require_once __DIR__."/../inc/ConnectionTest.php";
+    require_once __DIR__."/../inc/ConnectionTest.php";
     require_once __DIR__."/../src/Store.php";
     require_once __DIR__."/../src/Brand.php";
 
     class BrandTest extends PHPUnit_Framework_TestCase
     {
-        // protected function tearDown()
-        // {
-        //     Store::deleteAll();
-        //     Brand::deleteAll();
-        // }
+        protected function tearDown()
+        {
+            Store::deleteAll();
+            Brand::deleteAll();
+        }
 
         function test_getId()
         {
@@ -62,6 +62,40 @@
             $this->assertEquals($new_name, $result);
         }
 
+        function test_save()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+
+            //Act
+            $brand->save();
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$brand], $result);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
+
+            $id2 = null;
+            $name2 = "Adidas";
+            $brand2 = new Brand($name2, $id2);
+            $brand2->save();
+
+            //Act
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$brand, $brand2], $result);
+        }
 
 
 //End Test

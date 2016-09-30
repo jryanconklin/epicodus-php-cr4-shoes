@@ -1,7 +1,7 @@
 <?php
 //Home Connection #1
     try {
-    $DB = new PDO("mysql:host=localhost;dbname=DBNAME;port=8889","root","root");
+    $DB = new PDO("mysql:host=localhost;dbname=shoes;port=8889","root","root");
     $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (Exception $e) {
       echo "Unable to Connect";
@@ -10,13 +10,13 @@
     } // native exception class
 
 // Home Connection #2
-    // $server = 'mysql:host=localhost:8889;dbname=DBNAME';
+    // $server = 'mysql:host=localhost:8889;dbname=shoes';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
 
 //Epicodus Connection
-    // $server = 'mysql:host=localhost;dbname=DBNAME';
+    // $server = 'mysql:host=localhost;dbname=shoes';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);

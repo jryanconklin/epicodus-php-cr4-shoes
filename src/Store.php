@@ -32,7 +32,8 @@
 //Regular Methods
         function save()
         {
-
+            $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function update()
@@ -66,17 +67,26 @@
         }
 
 //Static Methods
-        function getAll()
+        static function getAll()
         {
+            $stores = array();
+            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
 
+            foreach($returned_stores as $store) {
+                $id = $store['id'];
+                $name = $store['name'];
+                $new_store = new Store($name, $id);
+                array_push($stores, $new_store);
+            }
+            return $stores;
         }
 
-        function deleteAll()
+        static function deleteAll()
         {
-
+            $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
 
-        function findById()
+        static function findById()
         {
 
         }

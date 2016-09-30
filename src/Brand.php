@@ -32,7 +32,8 @@
 //Regular Methods
         function save()
         {
-
+            $GLOBALS['DB']->exec("INSERT INTO brands (name) VALUES ('{$this->getName()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function update()
@@ -68,12 +69,21 @@
 //Static Methods
         function getAll()
         {
+            $brands = array();
+            $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
 
+            foreach($returned_brands as $brand) {
+                $id = $brand['id'];
+                $name = $brand['name'];
+                $new_brand = new Brand($name, $id);
+                array_push($brands, $new_brand);
+            }
+            return $brands;
         }
 
         function deleteAll()
         {
-
+            $GLOBALS['DB']->exec("DELETE FROM brands;");
         }
 
         function findById()
