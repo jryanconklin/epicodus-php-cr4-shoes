@@ -45,6 +45,22 @@
             $this->assertEquals($name, $result);
         }
 
+        function test_setName()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+
+            $new_name = "Ted Meyer";
+
+            //Act
+            $store->setName($new_name);
+            $result = $store->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
 
 
 //End Test

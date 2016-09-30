@@ -45,6 +45,23 @@
             $this->assertEquals($name, $result);
         }
 
+        function test_setName()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+
+            $new_name = "Shock Martens";
+
+            //Act
+            $brand->setName($new_name);
+            $result = $brand->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
+
 
 
 //End Test
