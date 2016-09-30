@@ -43,7 +43,7 @@
 
         function delete()
         {
-
+            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->id};");
         }
 
         function getJoinList()
