@@ -163,7 +163,50 @@
 
         function test_getJoinList()
         {
+            //Arrange
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
 
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
+
+            $id2 = null;
+            $name2 = "Ted Meyer";
+            $store2 = new Store($name2, $id2);
+            $store2->save();
+
+            //Act
+            $brand->addJoinList($store);
+            $brand->addJoinList($store2);
+            $result = $brand->getJoinList();
+
+            //Assert
+            $this->assertEquals([$store, $store2], $result);
+        }
+
+        function test_addJoinList()
+        {
+            //Arrange
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
+
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
+
+            //Act
+            $brand->addJoinList($store);
+            $result = $brand->getJoinList();
+
+            //Assert
+            $this->assertEquals([$store], $result);
         }
 
 

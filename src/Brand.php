@@ -49,12 +49,24 @@
 
         function getJoinList()
         {
-
+            $results = $GLOBALS['DB']->query(
+            "SELECT stores.* FROM brands
+                JOIN stores_brands ON (stores_brands.brand_id = brands.id)
+                JOIN stores ON (stores.id = stores_brands.store_id)
+            WHERE brands.id = {$this->getId()};");
+            $join_list = array();
+            foreach ($results as $result) {
+                $id = $result['id'];
+                $name = $result['name'];
+                $new_store = new Store($name, $id);
+                array_push($join_list, $new_store);
+            }
+            return $join_list;
         }
 
-        function addJoinList()
+        function addJoinList($store)
         {
-
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
         }
 
         function deleteFromJoinList()
