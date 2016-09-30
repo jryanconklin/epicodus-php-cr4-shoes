@@ -16,7 +16,7 @@
 //Getter and Setter Methods
         function getId()
         {
-
+            return $this->id;
         }
 
         function getName()
