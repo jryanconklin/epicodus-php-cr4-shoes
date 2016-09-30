@@ -21,5 +21,11 @@
                     </form>
                 </div>
             </div>
+            <hr>
+            <form action="/brands/{{ brand.getId }}" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button class="btn btn-danger" type="submit">Delete this Brand</button>
+            </form>
+            <hr>
 
 {% include 'footer.html.twig' %}

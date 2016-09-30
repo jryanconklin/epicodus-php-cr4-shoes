@@ -20,6 +20,12 @@
                         </div>
                     </form>
                 </div>
+                <hr>
+                <form action="/stores/{{ store.getId }}" method="post">
+                    <input name="_method" type="hidden" value="delete">
+                    <button class="btn btn-danger" type="submit">Delete this Store</button>
+                </form>
+                <hr>
             </div>
 
 {% include 'footer.html.twig' %}
