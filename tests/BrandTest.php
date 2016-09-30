@@ -28,9 +28,22 @@
             $result = $brand->getId();
 
             //Assert
-            $this->assertEquals(1, $result);
+            $this->assertEquals($id, $result);
         }
 
+        function test_getName()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+
+            //Act
+            $result = $brand->getName();
+
+            //Assert
+            $this->assertEquals($name, $result);
+        }
 
 
 

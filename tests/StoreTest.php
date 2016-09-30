@@ -28,9 +28,22 @@
             $result = $store->getId();
 
             //Assert
-            $this->assertEquals(1, $result);
+            $this->assertEquals($id, $result);
         }
 
+        function test_getName()
+        {
+            //Arrange
+            $id = 1;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+
+            //Act
+            $result = $store->getName();
+
+            //Assert
+            $this->assertEquals($name, $result);
+        }
 
 
 
