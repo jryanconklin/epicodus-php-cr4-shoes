@@ -133,8 +133,7 @@
 
             //Act
             $new_name = "Target";
-            $store->setName($new_name);
-            $store->update();
+            $store->update($new_name);
             $result = Store::getAll();
 
             //Assert
@@ -162,8 +161,53 @@
             $this->assertEquals([$store2], $result);
         }
 
+        function test_getJoinList()
+        {
+            //Arrange
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
 
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
 
+            $id2 = null;
+            $name2 = "Adidas";
+            $brand2 = new Brand($name2, $id2);
+            $brand2->save();
+
+            //Act
+            $store->addJoinList($brand);
+            $store->addJoinList($brand2);
+            $result = $store->getJoinList();
+
+            //Assert
+            $this->assertEquals([$brand, $brand2], $result);
+        }
+
+        function test_addJoinList()
+        {
+            //Arrange
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
+
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
+
+            //Act
+            $store->addJoinList($brand);
+            $result = $store->getJoinList();
+
+            //Assert
+            $this->assertEquals([$brand], $result);
+        }
 
 
 

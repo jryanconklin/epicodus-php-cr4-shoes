@@ -133,8 +133,7 @@
 
             //Act
             $new_name = "Nike";
-            $brand->setName($new_name);
-            $brand->update();
+            $brand->update($new_name);
             $result = Brand::getAll();
 
             //Assert
@@ -161,6 +160,12 @@
             //Assert
             $this->assertEquals([$brand2], $result);
         }
+
+        function test_getJoinList()
+        {
+
+        }
+
 
 
 //End Test
