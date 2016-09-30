@@ -86,7 +86,7 @@
             $store->save();
 
             $id2 = null;
-            $name2 = "Fred Meyer";
+            $name2 = "Ted Meyer";
             $store2 = new Store($name2, $id2);
             $store2->save();
 
@@ -106,7 +106,7 @@
             $store->save();
 
             $id2 = null;
-            $name2 = "Fred Meyer";
+            $name2 = "Ted Meyer";
             $store2 = new Store($name2, $id2);
             $store2->save();
 
@@ -116,6 +116,29 @@
 
             //Assert
             $this->assertEquals($store, $result);
+        }
+
+        function test_update()
+        {
+            //Arrange
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
+
+            $id2 = null;
+            $name2 = "Ted Meyer";
+            $store2 = new Store($name2, $id2);
+            $store2->save();
+
+            //Act
+            $new_name = "Target";
+            $store->setName($new_name);
+            $store->update();
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals([$store, $store2], $result);
         }
 
 

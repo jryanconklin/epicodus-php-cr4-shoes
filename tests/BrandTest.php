@@ -118,6 +118,29 @@
             $this->assertEquals($brand, $result);
         }
 
+        function test_update()
+        {
+            //Arrange
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
+
+            $id2 = null;
+            $name2 = "Adidas";
+            $brand2 = new Brand($name2, $id2);
+            $brand2->save();
+
+            //Act
+            $new_name = "Nike";
+            $brand->setName($new_name);
+            $brand->update();
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$brand, $brand2], $result);
+        }
+
 
 //End Test
     }

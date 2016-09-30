@@ -38,7 +38,7 @@
 
         function update()
         {
-
+            $GLOBALS['DB']->exec("UPDATE brands SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function delete()

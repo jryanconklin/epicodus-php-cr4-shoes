@@ -38,7 +38,7 @@
 
         function update()
         {
-
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function delete()
