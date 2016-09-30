@@ -4,24 +4,36 @@
                 <small class="text-muted">An Interactive Shoe Management System by styleTech Inc.</small>
             </div>
             <div class="mainSection">
-                <h3>{{ store.getName }}</h3>
-
+                <div class="row">
                 {% if brands is not empty %}
-                    <h4>Here are the Brands for this Store</h4>
+                    <h4>Brands for {{store.getName}}</h4>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="list-group col-sm-6">
                         <ul>
                             {% for brand in brands %}
-                                <li>{{ brand.getName }}</li>
+                                <li class="list-group-item">{{ brand.getName }}</li>
                             {% endfor %}
                         </ul>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-12">
+                        <form action="/stores/{{store.getId}}/edit" method="get">
+                            <button class="btn btn-success" type="submit">Edit this Store</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <h3>No Brands Quite Yet</h3>
                 {% endif %}
-
-                <h3>Add a Brand to {{ store.getName }}</h3>
-
-                <form action="/add_brands" method="post" class="form-inline">
+                </div>
+                <hr>
+                <h4>Add a Brand to {{ store.getName }}</h4>
+                <form action="/add_brands" method="post" class="form-inline add-data">
                     <div class="form-group">
                         <input id="store_id" type="hidden" name="store_id" value="{{ store.getId }}">
                         <label for="name">Brand Name</label>
-                        <select id="brand_id" name="brand_id" type="text">
+                        <select class="form-control" id="brand_id" name="brand_id" type="text">
                             {% for brand in all_brands %}
                                 <option value="{{ brand.getId }}">{{ brand.getName }}</option>
                             {% endfor %}
@@ -31,10 +43,7 @@
                         <button class="btn btn-success" type="submit">Add Brand</button>
                     </div>
                 </form>
-
-                <form action="/stores/{{store.getId}}/edit" method="get" class="form-inline">
-                    <button class="btn btn-success" type="submit">Edit this Store</button>
-                </form>
+                <hr>
             </div>
 
             <form action="/" method="get">
