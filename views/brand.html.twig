@@ -4,24 +4,36 @@
                 <small class="text-muted">An Interactive Shoe Management System by styleTech Inc.</small>
             </div>
             <div class="mainSection">
-                <h3>{{ brand.getName }}</h3>
-
-                {% if stores is not empty %}
-                    <h4>Here are the Stores for this Brand</h4>
-                        <ul>
-                            {% for store in stores %}
-                                <li>{{ store.getName }}</li>
-                            {% endfor %}
-                        </ul>
-                {% endif %}
-
-                <h3>Add a Store to {{ brand.getName }}</h3>
-
-                <form action="/add_stores" method="post" class="form-inline">
+                <div class="row">
+                    {% if stores is not empty %}
+                        <h4>Stores for {{ brand.getName }}</h4>
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="list group col-sm-6">
+                            <ul>
+                                {% for store in stores %}
+                                    <li class="list-group-item">{{ store.getName }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-12">
+                            <form action="/brands/{{brand.getId}}/edit" method="get" class="form-inline">
+                                <button class="btn btn-success" type="submit">Edit this Brand</button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <h3>No Stores Quite Yet</h3>
+                    {% endif %}
+                </div>
+                <hr>
+                <h4>Add a Store to {{ brand.getName }}</h4>
+                <form action="/add_stores" method="post" class="form-inline add-data">
                     <div class="form-group">
                         <input id="brand_id" type="hidden" name="brand_id" value="{{ brand.getId }}">
                         <label for="name">Store Name</label>
-                        <select id="store_id" name="store_id" type="text">
+                        <select class="form-control" id="store_id" name="store_id" type="text">
                             {% for store in all_stores %}
                                 <option value="{{ store.getId }}">{{ store.getName }}</option>
                             {% endfor %}
@@ -31,10 +43,7 @@
                         <button class="btn btn-success" type="submit">Add Store</button>
                     </div>
                 </form>
-
-                <form action="/brands/{{brand.getId}}/edit" method="get" class="form-inline">
-                    <button class="btn btn-success" type="submit">Edit this Brand</button>
-                </form>
+                <hr>
             </div>
 
             <form action="/" method="get">
@@ -42,6 +51,5 @@
                     <button class="btn btn-primary" type="submit">Go Home</button>
                 </div>
             </form>
-
 
 {% include 'footer.html.twig' %}

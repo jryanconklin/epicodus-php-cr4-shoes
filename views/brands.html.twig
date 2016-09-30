@@ -5,13 +5,23 @@
             </div>
             <div class="mainSection">
                 {% if brands is not empty %}
-                    <h4>Here are the Brands:</h4>
-                    <ul>
+                <div class="row">
+                    <h4>Available Brands</h4>
+                    <hr>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="list-group col-sm-6">
                         {% for brand in brands %}
-                        <li><a href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                        <ul>
+                            <li class="list-group-item"><a class="list-group-item-action" href="/brands/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                        </ul>
                         {% endfor %}
-                    </ul>
+                    </div>
+                {% else %}
+                    <h3>No Brands Quite Yet</h3>
                 {% endif %}
+                </div>
+                <hr>
                 <form action="/brands" method="post" class="form-inline">
                     <div class="form-group">
                         <label for="name">Brand Name</label>
