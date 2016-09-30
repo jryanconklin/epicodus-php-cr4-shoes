@@ -209,6 +209,27 @@
             $this->assertEquals([$brand], $result);
         }
 
+        function test_deleteConnection()
+        {
+            //Arrange
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
+
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
+
+            //Act
+            $store->addJoinList($brand);
+            $store->delete();
+            $result = $brand->getJoinList();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
 
 
 //End Test
