@@ -44,7 +44,7 @@
     });
 
     $app->post("delete_stores", function() use ($app) {
-        Stores::deleteAll();
+        Store::deleteAll();
         return $app['twig']->render('index.html.twig');
     });
 

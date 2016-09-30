@@ -4,17 +4,23 @@
                 <small class="text-muted">An Interactive Shoe Management System by styleTech Inc.</small>
             </div>
             <div class="mainSection">
-                <h3>Our Stores</h3>
-
                 {% if stores is not empty %}
-                    <h4>Here are the Stores:</h4>
-                    <ul>
+                <div class="row">
+                    <h4>Available Stores:</h4>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="list-group col-sm-6">
                         {% for store in stores %}
-                        <li><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></li>
+                        <li class="list-group-item"><a class="list-group-item-action" href="/stores/{{ store.getId }}">{{ store.getName }}</a></li>
                         {% endfor %}
-                    </ul>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                {% else %}
+                    <h3>No Stores Quite Yet</h3>
                 {% endif %}
-                <form action="/stores" method="post" class="form-inline">
+                </div>
+                <form action="/stores" method="post" class="form-inline add-data">
                     <div class="form-group">
                         <label for="name">Store Name</label>
                         <input id="name" name="name" type="text" class="form-control">

@@ -47,8 +47,11 @@ img {
     margin-top: 25px;;
 }
 
-
-
+.data-table,
+.add-data,
+.edit-form {
+  margin-top: 25px;
+}
 
 .mainFooter {
   font-size: .75em;
