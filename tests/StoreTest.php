@@ -97,6 +97,27 @@
             $this->assertEquals([$store, $store2], $result);
         }
 
+        function test_findById()
+        {
+            //Arrange
+            $id = null;
+            $name = "Fred Meyer";
+            $store = new Store($name, $id);
+            $store->save();
+
+            $id2 = null;
+            $name2 = "Fred Meyer";
+            $store2 = new Store($name2, $id2);
+            $store2->save();
+
+            //Act
+            $search_id = $store->getId();
+            $result = Store::findById($search_id);
+
+            //Assert
+            $this->assertEquals($store, $result);
+        }
+
 
 
 //End Test

@@ -67,7 +67,7 @@
         }
 
 //Static Methods
-        function getAll()
+        static function getAll()
         {
             $brands = array();
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
@@ -81,14 +81,20 @@
             return $brands;
         }
 
-        function deleteAll()
+        static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM brands;");
         }
 
-        function findById()
+        static function findById($search_id)
         {
-
+            $brands = $GLOBALS['DB']->query("SELECT * FROM brands WHERE id = {$search_id};");
+            foreach($brands as $brand) {
+                $id = $brand['id'];
+                $name = $brand['name'];
+                $found_brand = new Brand($name, $id);
+                return $found_brand;
+            }
         }
 
 //End Class

@@ -86,10 +86,18 @@
             $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
 
-        static function findById()
+        static function findById($search_id)
         {
-
+            $stores = $GLOBALS['DB']->query("SELECT * FROM stores WHERE id = {$search_id};");
+            foreach ($stores as $store) {
+                $id = $store['id'];
+                $name = $store['name'];
+                $found_store = new Store($name, $id);
+                return $found_store;
+            }
         }
+
+
 
 //End Class
     }

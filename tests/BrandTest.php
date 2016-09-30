@@ -97,6 +97,27 @@
             $this->assertEquals([$brand, $brand2], $result);
         }
 
+        function test_findById()
+        {
+            //Arrange
+            $id = null;
+            $name = "Doc Martens";
+            $brand = new Brand($name, $id);
+            $brand->save();
+
+            $id2 = null;
+            $name2 = "Adidas";
+            $brand2 = new Brand($name2, $id2);
+            $brand2->save();
+
+            //Act
+            $search_id = $brand->getId();
+            $result = Brand::findById($search_id);
+
+            //Assert
+            $this->assertEquals($brand, $result);
+        }
+
 
 //End Test
     }
